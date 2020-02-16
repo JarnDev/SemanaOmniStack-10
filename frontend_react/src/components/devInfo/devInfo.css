@@ -1,0 +1,64 @@
+
+li.dev-info{
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,0.1);
+    border-radius: 2px;
+    padding: 20px;
+}
+
+
+li.dev-info header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+li.dev-info header img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+li.dev-info header .user-info{
+    margin-left: 15px;
+}
+
+li.dev-info header .user-info strong{
+    display: block;
+    font-size: 16px;
+    color: black;
+}
+
+li.dev-info header .user-info span{
+    font-size: 12px;
+    color: #999999;
+    margin-top: 5px;
+}
+
+li.dev-info p{
+    color: gray;
+    font-size: 12px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+li.dev-info a{
+    color: gray;
+    font-size: 14px;
+    text-decoration: none;
+    transition: font-size 0.1s;
+}
+li.dev-info a:hover{
+    font-size: 16px;
+    color: black;
+}
+
+.remove{
+    float: right;
+    cursor: pointer;
+}
+.remove:hover{
+    font-size: 20px;
+    color: red;
+    /* -webkit-user-select: none; */
+}

@@ -1,0 +1,58 @@
+#app{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#app main{
+    flex:1
+}
+
+#app aside{
+    margin-right: 30px;
+    width: 320px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0,0,0,0.1);
+    border-radius: 2px;
+    padding: 30px 20px;
+}
+
+@media(max-width: 1000px){
+    #app{
+        flex-direction: column;
+    }
+    #app main{
+        margin-top: 20px;
+        width: 100%;
+    }
+    #app aside{
+        margin-right: 0px;
+        width: 100%;
+    }
+}
+
+
+main ul{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    list-style: none;
+}
+
+@media(max-width: 600px){
+    aside{
+        min-width: 300px;
+    }
+    #app{
+        padding: 20px 10px;
+    }
+    main ul{
+        grid-template-columns: 1fr;
+        min-width: 300px;
+    }
+}
+
