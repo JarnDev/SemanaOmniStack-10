@@ -7,6 +7,7 @@ class DeveloperControler{
         return {
             home: '/',
             create: '/addDev',
+            remove: '/removeDev',
             searchNearby: "/searchNearby"
         }
     }
@@ -53,7 +54,6 @@ class DeveloperControler{
             if(!db_response){
 
                 const git_response = await axios.get(`https://api.github.com/users/${github_username}`)
-                console.log(longitude,latitude)
                 const { name = login, avatar_url, bio } = git_response.data
                 const techs_array = techs.split(',').map(item => item.trim())
                 const location = {
@@ -72,9 +72,17 @@ class DeveloperControler{
                 })
             }
 
-            return res.json({
-                status: db_response
-            })
+            return res.json(
+                db_response
+            )
+        }
+    }
+
+    removeDev(){
+        return async (req, res) => {
+            const {id} = req.query
+            const db_response = await developer.remove({_id:id})  
+            return res.json(db_response)
         }
     }
 }

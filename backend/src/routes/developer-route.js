@@ -4,11 +4,12 @@ const router = Router()
 
 const DeveloperControler = require('../controllers/developer-controler')
 const devControler = new DeveloperControler()
+const devRotas = DeveloperControler.rotas()
 
-router.get(DeveloperControler.rotas().home, devControler.home())
-router.post(DeveloperControler.rotas().create,devControler.addDev())
+router.get(devRotas.home, devControler.home())
+router.post(devRotas.create,devControler.addDev())
 
-router.get(DeveloperControler.rotas().searchNearby, devControler.searchNearby())
-
+router.get(devRotas.searchNearby, devControler.searchNearby())
+router.delete(devRotas.remove, devControler.removeDev())
 
 module.exports = router

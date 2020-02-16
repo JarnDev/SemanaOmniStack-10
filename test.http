@@ -20,4 +20,12 @@ GET http://localhost/dev/searchNearby
     ?latitude=-12.9298496
     &longitude=-38.4324061
     &techs=Mongo
-    
+
+### remove
+
+DELETE http://localhost/dev/removeDev
+content-Type: application/json
+
+{
+    "id":"5e49583c6c6f2e48a0c404a8"
+}
