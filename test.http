@@ -1,10 +1,10 @@
 ###Get all devs
 
-GET http://localhost/dev
+GET http://127.0.0.1:8000/dev
 
 ### add a dev
 
-POST http://localhost/dev/addDev
+POST http://127.0.0.1:8000/dev/addDev
 content-Type: application/json
 
 {
@@ -16,16 +16,16 @@ content-Type: application/json
 
 ### serch devs nearby and by tech
 
-GET http://localhost/dev/searchNearby
+GET http://127.0.0.1:8000/dev/searchNearby
     ?latitude=-12.9298496
     &longitude=-38.4324061
-    &techs=Python
+    &techs=Django, Express
 
 ### remove
 
-DELETE http://localhost/dev/removeDev
+DELETE http://127.0.0.1:8000/dev/removeDev
 content-Type: application/json
 
 {
-    "id":"5e49583c6c6f2e48a0c404a8"
+    "id":"5e4ae7138787ec11243042c2"
 }

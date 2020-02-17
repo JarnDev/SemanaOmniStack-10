@@ -1,9 +1,9 @@
 
 const axios = require('axios');
 const developer = require('../models/developers-model')
-class DeveloperControler{
+class DeveloperControler {
 
-    static rotas(){
+    static rotas() {
         return {
             home: '/',
             create: '/addDev',
@@ -12,8 +12,8 @@ class DeveloperControler{
         }
     }
 
-    home(){
-        return async (req,res) => {
+    home() {
+        return async (req, res) => {
             const devs = await developer.find()
 
             return res.json(devs)
@@ -21,21 +21,21 @@ class DeveloperControler{
     }
 
 
-    searchNearby(){
-        return async (req, res) =>{
-            const { latitude, longitude, techs} = req.query
+    searchNearby() {
+        return async (req, res) => {
+            const { latitude, longitude, techs } = req.query
 
             const techs_array = techs.split(',').map(item => item.trim())
 
             const dev = await developer.find({
-                techs: { $in:techs_array } ,
+                techs: { $in: techs_array },
                 location: {
-                    $near:{
-                        $geometry:{
-                            type:'Point',
-                            coordinates:[ longitude, latitude ]
+                    $near: {
+                        $geometry: {
+                            type: 'Point',
+                            coordinates: [longitude, latitude]
                         },
-                        $maxDistance: 1000
+                        $maxDistance: 10000
                     }
                 }
             })
@@ -45,29 +45,29 @@ class DeveloperControler{
         }
     }
 
-    addDev(){
-        return async (req,res)=>{
+    addDev() {
+        return async (req, res) => {
 
             const { github_username, techs, latitude, longitude } = req.body;
-            let db_response = await developer.findOne({github_username})
+            let db_response = await developer.findOne({ github_username })
 
-            if(!db_response){
+            if (!db_response) {
 
                 const git_response = await axios.get(`https://api.github.com/users/${github_username}`)
                 const { name = login, avatar_url, bio } = git_response.data
                 const techs_array = techs.split(',').map(item => item.trim())
                 const location = {
                     type: 'Point',
-                    coordinates:[longitude,latitude]
+                    coordinates: [longitude, latitude]
                 }
-    
-    
+
+
                 db_response = await developer.create({
                     github_username,
                     name,
                     avatar_url,
                     bio,
-                    techs:techs_array,
+                    techs: techs_array,
                     location
                 })
             }
@@ -78,10 +78,10 @@ class DeveloperControler{
         }
     }
 
-    removeDev(){
+    removeDev() {
         return async (req, res) => {
-            const {id} = req.query
-            const db_response = await developer.remove({_id:id})  
+            const { id } = req.query
+            const db_response = await developer.remove({ _id: id })
             return res.json(db_response)
         }
     }
