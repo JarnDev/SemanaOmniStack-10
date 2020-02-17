@@ -17,8 +17,8 @@ function App() {
   }
 
   async function removeDev(dev_id){
-    const api_response = await dev_api.delete('/dev/removeDev', {params:{"id":dev_id}})
-    setDevs(devs.filter(dev => (dev._id!=dev_id)))
+    await dev_api.delete('/dev/removeDev', {params:{"id":dev_id}})
+    setDevs(devs.filter(dev => (dev._id!==dev_id)))
   
   }
 
