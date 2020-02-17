@@ -3,6 +3,8 @@ An project to find near registered developers filtering by technology and distan
 
 Overview:
 
+    Database: Mongo Atlas
+
     Stack:
   
       Folder BackEnd:
@@ -12,13 +14,20 @@ Overview:
         - Axios
         - Mongoose
         
-      Folder FrontEnd-React:
+      Folder FrontEnd_React:
       
         - React
         - Axios
       
-      Folder FrontEnd-Mobile-ReactNative:
+      Folder Mobile_ReactNative:
       
         - React-Native
         - Axios
         - expo
+
+      Folder Backend_django
+      
+        - Python Django
+        - MongoEngine
+        
+      
