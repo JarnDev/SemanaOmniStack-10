@@ -9,7 +9,11 @@ from .models import devs
 
 
 def allDevs(request):
-    return HttpResponse(devs.objects.all().to_json(), content_type='application/json')
+    devList = json.loads(devs.objects.all().to_json())
+    for dev in devList:
+        dev['_id'] = dev['_id']['$oid']
+
+    return HttpResponse(json.dumps(devList), content_type='application/json')
 
 
 def addDev(request):
@@ -56,10 +60,12 @@ def searchNearby(request):
     techs = request.GET['techs']
     techs_array = [tech.strip() for tech in techs.split(',')]
 
-    devList = devs.objects(
+    devList = json.loads(devs.objects(
         techs__in=techs_array,
         location__near={"type": "Point", "coordinates": [longitude, latitude]},
         location__max_distance=10000
-    )
+    ).to_json())
+    for dev in devList:
+        dev['_id'] = dev['_id']['$oid']
 
-    return HttpResponse(devList.to_json(), content_type='application/json')
+    return HttpResponse(json.dumps(devList), content_type='application/json')
