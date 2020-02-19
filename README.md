@@ -30,4 +30,7 @@ Overview:
         - Python Django
         - MongoEngine
         
+      Folder FrontendAngular
       
+        - Angular
+        - OpenLayers
