@@ -1,4 +1,4 @@
-# dev_finder
+# App with MEAN/MERN/DJANGO stack for Ormuco view
 An project to find near registered developers filtering by technology and distance, with github profile API
 
 Overview:
