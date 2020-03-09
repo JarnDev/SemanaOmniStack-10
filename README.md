@@ -1,4 +1,5 @@
 # App with MEAN/MERN/DJANGO stack for view
+Projeto base da SemanaOministack 10 da RocketSeat
 An project to find near registered developers filtering by technology and distance, with github profile API
 
 Overview:
